@@ -3,6 +3,8 @@
 
 inter-process communication(IPC) and remote procedure call (RPC) combined. Makes Electron IPC work more like callbacks.
 
+So instead of calling the main thread, it is replying back, etc. and manually keeping track of everything. This module abstracts it away where you can call functions added to IRPC in the main thread and get a callback as if it was a local function even though it's running in the main thread.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
