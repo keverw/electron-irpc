@@ -1,0 +1,24 @@
+{
+  "author": "Kevin Whitman (https://github.com/keverw)",
+  "name": "electron-irpc",
+  "description": "inter-process communication(IPC) and remote procedure call (RPC) combined.",
+  "version": "0.0.1",
+  "keywords": [
+    "electron",
+    "RPC",
+    "IPC",
+    "IPRC"
+  ],
+  "dependencies": {
+    "bson": "^0.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keverw/electron-irpc"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "index.js",
+  "license": "BSD-2-Clause"
+}
