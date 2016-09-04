@@ -1,4 +1,4 @@
-# electron-irpc v0.0.1
+# electron-irpc v0.0.2
 [![npm version](https://badge.fury.io/js/electron-irpc.svg)](https://badge.fury.io/js/electron-irpc) &nbsp; [![Build Status](https://travis-ci.org/keverw/electron-irpc.svg?branch=master)](https://travis-ci.org/keverw/electron-irpc)
 
 inter-process communication(IPC) and remote procedure call (RPC) combined. Makes Electron IPC work more like callbacks.

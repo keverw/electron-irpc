@@ -1,4 +1,4 @@
-(function ()
+(function()
 {
     //inter-process communication(IPC) and remote procedure call (RPC) combined.
 
@@ -9,23 +9,23 @@
     var mainChannel = channelPrefix + '-main';
 
     var toObject = function(error)
-	{
-		var alt = {};
-        
-		Object.getOwnPropertyNames(error).forEach(function (key) {
-			if (error[key] && typeof error[key] == 'object')
-			{
-				alt[key] = toObject(error[key]);
-			}
-			else
-			{
-				alt[key] = error[key];
-			}
+    {
+        var alt = {};
 
-		});
+        Object.getOwnPropertyNames(error).forEach(function(key) {
+            if (error[key] && typeof error[key] == 'object')
+            {
+                alt[key] = toObject(error[key]);
+            }
+            else
+            {
+                alt[key] = error[key];
+            }
 
-		return alt;
-	};
+        });
+
+        return alt;
+    };
 
     module.exports = {
         main: function()
@@ -59,11 +59,20 @@
                             err = toObject(err);
                         }
 
-                        event.sender.send(meta.chanName, BSON.serialize({
-                            reqID: meta.reqID,
-                            err: err,
-                            result: result
-                        }, false, true, false));
+                        try {
+                            event.sender.send(meta.chanName, BSON.serialize({
+                                reqID: meta.reqID,
+                                err: err,
+                                result: result
+                            }, false, true, false));
+
+                        } catch (err) {
+                            if (err.message != 'Object has been destroyed') // Silence error if window was closed before callback was called
+                            {
+                                throw err;
+                            }
+
+                        }
 
                     };
 
